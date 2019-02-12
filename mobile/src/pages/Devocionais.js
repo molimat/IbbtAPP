@@ -20,7 +20,7 @@ export default class Devocionais extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Devocionais</Text>
+        <Text>Devocionas</Text>
         {this.state.devocional.map(d => {
           <Text>{d.id}</Text>;
         })}
