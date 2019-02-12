@@ -4,10 +4,11 @@ import { Text, StyleSheet, View } from "react-native";
 export default class Devocional extends Component {
   render() {
     const { conteudo } = this.props;
+
     return (
       <View style={styles.container}>
-        <Text style={styles.title}> {conteudo.title} </Text>
-        <Text style={styles.content}> {conteudo.content} </Text>
+        <Text style={styles.title}> {conteudo.title.rendered} </Text>
+        <Text style={styles.content}> {conteudo.content.rendered} </Text>
         <Text style={styles.author}> {conteudo.author} </Text>
       </View>
     );

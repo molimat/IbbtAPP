@@ -12,7 +12,7 @@ export default class Devocionais extends Component {
 
   async componentDidMount() {
     const response = await axios.get(
-      "https://ibbt.org.br/wp-json/wp/v2/posts/?categories=48"
+      "https://ibbt.org.br/wp-json/wp/v2/posts/?categories=28"
     );
     this.setState({ devocional: response.data });
   }
@@ -21,12 +21,9 @@ export default class Devocionais extends Component {
     return (
       <View style={styles.container}>
         <Text>Devocionais</Text>
-        {this.state.devocional.map(d => {
-          <Text>{d.id}</Text>;
-        })}
         <FlatList
           data={this.state.devocional}
-          keyExtractor={devocional => devocional.id} // é uma property que precisa retornar cada id unique para evitar problemas.
+          keyExtractor={devocional => devocional.id.toString()} // é uma property que precisa retornar cada id unique para evitar problemas.
           renderItem={({ item }) => <Devocional conteudo={item} />} //Aqui é o item que vai ser de fato mostrado
         />
       </View>
