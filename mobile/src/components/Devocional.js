@@ -1,15 +1,48 @@
 import React, { Component } from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View, Image } from "react-native";
+import { WebView } from "react-native-webview";
 
 export default class Devocional extends Component {
+  state = {
+    loading: true
+  };
+
+  setLoaded = () => {
+    this.setState({ loading: false });
+  };
+
   render() {
     const { conteudo } = this.props;
 
     return (
       <View style={styles.container}>
-        <Text style={styles.title}> {conteudo.title.rendered} </Text>
-        <Text style={styles.content}> {conteudo.content.rendered} </Text>
-        <Text style={styles.author}> {conteudo.author} </Text>
+        <Text
+          style={{
+            fontSize: 20,
+            marginLeft: 10,
+            marginBottom: 5,
+            marginTop: 5,
+            fontWeight: "bold"
+          }}
+        >
+          {conteudo.title.rendered}
+        </Text>
+        <Image
+          style={{ height: 150, width: "100%" }}
+          source={{
+            uri:
+              conteudo.better_featured_image.media_details.sizes.medium_large
+                .source_url
+          }}
+        />
+        <WebView
+          originWhitelist={["*"]}
+          automaticallyAdjustContentInsets={false}
+          style={{ height: 100, backgroundColor: "#FFF" }}
+          source={{ html: conteudo.excerpt.rendered }}
+          scrollEnabled={false}
+          onLoadEnd={this.setLoaded}
+        />
       </View>
     );
   }
@@ -17,28 +50,11 @@ export default class Devocional extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
-    borderBottomWidth: 1,
-    borderColor: "#eee"
-  },
-
-  author: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#1C2022"
-  },
-
-  content: {
-    fontSize: 15,
-    lineHeight: 20,
-    color: "#1C2022",
-    marginVertical: 10
-  },
-
-  Title: {
-    fontSize: 15,
-    lineHeight: 20,
-    color: "#1C2022",
-    marginVertical: 10
+    backgroundColor: "#FFF",
+    height: 350,
+    flexDirection: "column",
+    justifyContent: "space-around",
+    marginBottom: 20,
+    elevation: 5
   }
 });

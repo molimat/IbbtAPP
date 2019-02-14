@@ -3,16 +3,16 @@ import { Text, View, StyleSheet, FlatList, SafeAreaView } from "react-native";
 
 import axios from "axios"; //devocionais categoria 28
 
-import Devocional from "../components/Devocional";
+import Mensagem from "../components/Mensagem";
 
-export default class Devocionais extends Component {
+export default class Podcasts extends Component {
   state = {
     devocional: []
   };
 
   async componentDidMount() {
     const response = await axios.get(
-      "https://ibbt.org.br/wp-json/wp/v2/posts/?categories=28"
+      "https://ibbt.org.br/wp-json/wp/v2/posts/?categories=48"
     );
     this.setState({ devocional: response.data });
   }
@@ -21,12 +21,13 @@ export default class Devocionais extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <View>
-          <Text>Devocionais</Text>
+          <Text>Podcasts</Text>
           <FlatList
             style={styles.flatlist}
             data={this.state.devocional}
+            numColumns={2}
             keyExtractor={devocional => devocional.id.toString()} // é uma property que precisa retornar cada id unique para evitar problemas.
-            renderItem={({ item }) => <Devocional conteudo={item} />} //Aqui é o item que vai ser de fato mostrado
+            renderItem={({ item }) => <Mensagem conteudo={item} />} //Aqui é o item que vai ser de fato mostrado
           />
         </View>
       </SafeAreaView>
