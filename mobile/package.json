@@ -1,5 +1,5 @@
 {
-  "name": "mobile",
+  "name": "IbbtAPP",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -9,16 +9,20 @@
   "dependencies": {
     "axios": "^0.18.0",
     "react": "16.6.3",
-    "react-native": "0.58.4",
+    "react-hot-loader": "4.4.0",
+    "react-native": "^0.58.5",
     "react-native-card-flip": "^1.0.4",
     "react-native-gesture-handler": "^1.0.15",
+    "react-native-paper": "^2.11.1",
+    "react-native-play-audio": "^0.1.2",
     "react-native-render-html": "^4.1.1",
     "react-native-vector-icons": "^6.2.0",
     "react-native-webview": "^5.1.0",
-    "react-navigation": "^3.1.5"
+    "react-navigation": "^3.1.5",
+    "react-navigation-material-bottom-tabs": "^1.0.0"
   },
   "devDependencies": {
-    "babel-core": "7.0.0-bridge.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "24.1.0",
     "jest": "24.1.0",
     "metro-react-native-babel-preset": "0.51.1",

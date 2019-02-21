@@ -5,12 +5,20 @@ import { WebView } from "react-native-webview";
 import CardFlip from "react-native-card-flip";
 import Icon from "react-native-vector-icons/AntDesign";
 import HTML from "react-native-render-html";
+import Player from "./Player";
 
 export default class Mensagem extends Component {
   state = {
     loading: true
   };
 
+  getURL = str => {
+    const URL = str.substring(
+      str.indexOf("src=") + 5,
+      str.indexOf(".mp3?") + 4
+    );
+    return URL;
+  };
   setLoaded = () => {
     this.setState({ loading: false });
   };
@@ -42,12 +50,15 @@ export default class Mensagem extends Component {
             </TouchableOpacity>
           </View>
         </View>
-        <TouchableOpacity
-          style={styles.cardContainer}
-          onPress={() => this.card.flip()}
-        >
-          <Text>CD</Text>
-        </TouchableOpacity>
+        <View>
+          <Player URL={this.getURL(conteudo.content.rendered)} />
+          <TouchableOpacity
+            style={styles.cardContainer}
+            onPress={() => this.card.flip()}
+          >
+            <Text>{this.getURL(conteudo.content.rendered)}</Text>
+          </TouchableOpacity>
+        </View>
       </CardFlip>
     );
   }
