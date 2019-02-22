@@ -5,10 +5,12 @@ import {
   View,
   TouchableOpacity,
   Platform,
-  Linking
+  Linking,
+  Image
 } from "react-native";
 
 import InfoIcons from "react-native-vector-icons/FontAwesome5";
+import { SocialIcon } from "react-native-elements";
 
 export class Slider extends Component {
   render() {
@@ -40,8 +42,42 @@ export class Infos extends Component {
   render() {
     return (
       <View>
-        <View>
-          <Text style={styles.title}> Contato </Text>
+        <View style={styles.socialIcons}>
+          <SocialIcon
+            iconSize={20}
+            type="facebook"
+            onPress={() => {
+              Linking.openURL("https://www.facebook.com/ibbtoficial/");
+            }}
+          />
+
+          <SocialIcon
+            iconSize={20}
+            type="instagram"
+            onPress={() => {
+              Linking.openURL("instagram://user?username=ibbtoficial");
+            }}
+          />
+
+          {/* <TouchableOpacity onPress={() => {}}>
+            <Image
+              source={require("../images/nglogo.png")}
+              style={{
+                resizeMode: "contain",
+                height: 50
+              }}
+            />
+          </TouchableOpacity> */}
+
+          <SocialIcon
+            iconSize={20}
+            type="youtube"
+            onPress={() => {
+              Linking.openURL(
+                "https://www.youtube.com/user/ibbtvideos/featured"
+              );
+            }}
+          />
         </View>
         <View style={styles.contatoContainer}>
           <View style={styles.contatoItems}>
@@ -120,7 +156,7 @@ const styles = StyleSheet.create({
   contatoContainer: {
     flexDirection: "row",
     justifyContent: "space-evenly",
-    alignContent: "center"
+    alignContent: "flex-start"
   },
   maps: {
     flex: 1,
@@ -145,5 +181,11 @@ const styles = StyleSheet.create({
   addressText: {
     flex: 1,
     borderRightWidth: 0.5
+  },
+
+  socialIcons: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    marginBottom: 10
   }
 });

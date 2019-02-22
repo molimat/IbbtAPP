@@ -8,12 +8,17 @@ export default class Main extends Component {
     return (
       <View>
         <View>
-          <Text> Main </Text>
+          <Text style={styles.title}>Seja muito bem-vindo!</Text>
         </View>
         <View>
+          <Text style={styles.title}>O que você não pode perder </Text>
+
           <Slider />
         </View>
         <View>
+          <Text style={styles.title}>
+            Se você quer ter mais informações...{" "}
+          </Text>
           <Infos />
         </View>
       </View>
@@ -21,4 +26,10 @@ export default class Main extends Component {
   }
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 24,
+    color: "#666",
+    margin: 10
+  }
+});
