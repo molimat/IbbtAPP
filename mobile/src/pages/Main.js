@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { Text, StyleSheet, View, TouchableOpacity, Image } from "react-native";
 
-import { Infos, Slider } from "../components/MainComponents";
+import { Divider } from "react-native-elements";
+
+import { MainContatos } from "../components/MainContatos";
+import { MainSlider } from "../components/MainSlider";
+import { Novidades } from "../components/Novidades";
+import { OverlayApresentacao } from "../components/OverlayApresentacao";
 
 export default class Main extends Component {
   render() {
@@ -9,17 +14,16 @@ export default class Main extends Component {
       <View>
         <View>
           <Text style={styles.title}>Seja muito bem-vindo!</Text>
+
+          <MainSlider />
         </View>
         <View>
           <Text style={styles.title}>O que você não pode perder </Text>
-
-          <Slider />
+          <Novidades />
         </View>
         <View>
-          <Text style={styles.title}>
-            Se você quer ter mais informações...{" "}
-          </Text>
-          <Infos />
+          <Text style={styles.title}>Nos conheça mais! </Text>
+          <MainContatos />
         </View>
       </View>
     );

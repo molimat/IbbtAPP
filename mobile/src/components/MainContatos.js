@@ -12,17 +12,7 @@ import {
 import InfoIcons from "react-native-vector-icons/FontAwesome5";
 import { SocialIcon } from "react-native-elements";
 
-export class Slider extends Component {
-  render() {
-    return (
-      <View>
-        <Text> Slider </Text>
-      </View>
-    );
-  }
-}
-
-export class Infos extends Component {
+export class MainContatos extends Component {
   openInMaps() {
     const scheme = Platform.select({
       ios: "maps:0,0?q=",
