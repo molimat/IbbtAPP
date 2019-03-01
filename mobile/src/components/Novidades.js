@@ -46,6 +46,14 @@ export class Novidades extends Component {
           featured
           onPress={() => this.openOverlay()}
         />
+        <Tile
+          imageSrc={require("../images/ministerios.jpg")}
+          title="MINISTÉRIOS"
+          height={100}
+          titleStyle={styles.tileTitle}
+          containerStyle={styles.tileContainer}
+          featured
+        />
       </View>
     );
   }

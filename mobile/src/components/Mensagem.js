@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { Text, StyleSheet, View, Image, TouchableOpacity } from "react-native";
-import { WebView } from "react-native-webview";
 
-import { Card, Button, Icon } from "react-native-elements";
-import CardFlip from "react-native-card-flip";
-//import Icon from "react-native-vector-icons/AntDesign";
+import { Button } from "react-native-elements";
+import { Divider } from "react-native-elements";
+import Icon from "react-native-vector-icons/AntDesign";
 import HTML from "react-native-render-html";
 import Player from "./Player";
 
@@ -20,106 +19,83 @@ export default class Mensagem extends Component {
     );
     return URL;
   };
+
   setLoaded = () => {
     this.setState({ loading: false });
   };
+
   //<Image style={{ height: 150, width: "100%" }} source={null} />
   render() {
     const { conteudo } = this.props;
+    const htmlTitle = conteudo.title.rendered;
+    const htmlExcert = conteudo.excerpt.rendered;
+    //const htmlContent = conteudo.content.rendered;
 
+    /* image={{
+      uri: conteudo.better_featured_image
+    }} */
     return (
-      <Card
-        title="HELLO WORLD"
-        image={{
-          uri: conteudo.better_featured_image
-        }}
-      >
-        <Text style={{ marginBottom: 10 }}>
-          The idea with React Native Elements is more about component structure
-          than actual design.
-        </Text>
-        <Button
-          icon={<Icon name="code" color="#ffffff" />}
-          backgroundColor="#03A9F4"
-          buttonStyle={{
-            borderRadius: 0,
-            marginLeft: 0,
-            marginRight: 0,
-            marginBottom: 0
-          }}
-          title="VIEW NOW"
-        />
-      </Card>
-      /*  <CardFlip style={styles.container} ref={card => (this.card = card)}>
-        <View style={styles.cardContainer}>
-          <HTML
-            style={styles.titleText}
-            html={conteudo.title.rendered}
-            baseFontStyle={{
-              fontSize: 25,
-              color: "#FFF",
-              fontWeight: "bold"
-            }}
-            containerStyle={{
-              marginLeft: 10
-            }}
+      <View>
+        <View style={styles.container}>
+          <Image
+            source={require("../images/ministerios.jpg")}
+            resizeMode={"cover"}
+            style={styles.imageContainer}
           />
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              style={styles.playButton}
-              onPress={() => this.card.flip()}
-            >
-              <Icon name="playcircleo" size={45} color="#FFF" />
-            </TouchableOpacity>
+          <View style={styles.infoContainer}>
+            <HTML html={htmlTitle} baseFontStyle={styles.title} />
+            <HTML html={htmlExcert} baseFontStyle={styles.subtitle} />
+          </View>
+          <View style={styles.rightContainer}>
+            <Button
+              icon={<Icon name="playcircleo" color="#ffffff" />}
+              backgroundColor="#5DA46F"
+            />
           </View>
         </View>
-        <View>
-          <Player URL={this.getURL(conteudo.content.rendered)} />
-          <TouchableOpacity
-            style={styles.cardContainer}
-            onPress={() => this.card.flip()}
-          >
-            <Text>{this.getURL(conteudo.content.rendered)}</Text>
-          </TouchableOpacity>
-        </View>
-      </CardFlip> */
+        <Divider style={{ backgroundColor: "#999" }} />
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
-    backgroundColor: "#FFF",
-    flexGrow: 1,
-    height: 150,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    height: 55,
     margin: 6,
-    padding: 20,
-    flexBasis: 0,
+
     flex: 1
   },
 
-  cardContainer: {
-    backgroundColor: "#5DA46F",
-    fontSize: 15,
-    height: 150,
-    elevation: 5,
-    flex: 1,
+  imageContainer: {
+    height: 55,
+
+    flex: 1.5
+  },
+
+  infoContainer: {
+    flex: 7,
+    margin: 5,
+    marginLeft: 10,
     flexDirection: "column",
-    borderRadius: 5
+    justifyContent: "flex-start"
   },
 
-  titleText: {
-    margin: 10,
-    flex: 5
-  },
-
-  playButton: { alignSelf: "flex-end" },
-
-  buttonContainer: {
-    justifyContent: "flex-end",
+  rightContainer: {
+    justifyContent: "center",
     flexDirection: "row",
     margin: 10,
-    flex: 2
+    flex: 1
+  },
+
+  title: {
+    fontSize: 14,
+    fontWeight: "bold"
+  },
+  subtitle: {
+    fontSize: 10,
+    color: "#999"
   }
 });

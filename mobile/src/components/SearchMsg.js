@@ -20,12 +20,14 @@ export default class SearchMsg extends React.Component {
         placeholder="O que você quer ouvir?"
         onChangeText={this.updateSearch}
         value={search}
+        showLoading
+        searchIcon={{ color: "#CCC" }}
         containerStyle={{
-          backgroundColor: "#0E7C7B",
+          backgroundColor: "#5DA46F",
           borderBottomColor: "transparent",
           borderTopColor: "transparent"
         }}
-        inputContainerStyle={{ backgroundColor: "#0E7C7B", borderWidth: 0 }}
+        inputContainerStyle={{ backgroundColor: "#5DA46F", borderWidth: 0 }}
         inputStyle={{ color: "white" }}
         placeholderTextColor="#CCC"
       />

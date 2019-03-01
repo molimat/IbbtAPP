@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, FlatList, SafeAreaView } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  FlatList,
+  SafeAreaView,
+  ScrollView
+} from "react-native";
 
 import axios from "axios"; //devocionais categoria 28
 import { ListItem } from "react-native-elements";
@@ -30,7 +37,7 @@ export default class Podcasts extends Component {
             <FlatList
               style={styles.flatlist}
               data={this.state.devocional}
-              numColumns={2}
+              numColumns={1}
               keyExtractor={devocional => devocional.id.toString()} // é uma property que precisa retornar cada id unique para evitar problemas.
               renderItem={({ item }) => <Mensagem conteudo={item} />} //Aqui é o item que vai ser de fato mostrado
             />
