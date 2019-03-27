@@ -21,7 +21,6 @@ export default class Devocionais extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <View>
-          <Text>Devocionais</Text>
           <FlatList
             style={styles.flatlist}
             data={this.state.devocional}

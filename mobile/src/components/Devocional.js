@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Text, StyleSheet, View, Image } from "react-native";
-import { WebView } from "react-native-webview";
+import { Tile } from "react-native-elements";
+import { withNavigation } from "react-navigation";
 
-export default class Devocional extends Component {
+class Devocional extends Component {
   state = {
     loading: true
   };
@@ -11,50 +12,49 @@ export default class Devocional extends Component {
     this.setState({ loading: false });
   };
 
+  openDevocionais = () => {};
+
   render() {
     const { conteudo } = this.props;
 
     return (
       <View style={styles.container}>
-        <Text
-          style={{
-            fontSize: 20,
-            marginLeft: 10,
-            marginBottom: 5,
-            marginTop: 5,
-            fontWeight: "bold"
-          }}
-        >
-          {conteudo.title.rendered}
-        </Text>
-        <Image
-          style={{ height: 150, width: "100%" }}
-          source={{
+        <Tile
+          imageSrc={{
             uri:
               conteudo.better_featured_image.media_details.sizes.medium_large
                 .source_url
           }}
-        />
-        <WebView
-          originWhitelist={["*"]}
-          automaticallyAdjustContentInsets={false}
-          style={{ height: 100, backgroundColor: "#FFF" }}
-          source={{ html: conteudo.excerpt.rendered }}
-          scrollEnabled={false}
-          onLoadEnd={this.setLoaded}
+          title={conteudo.title.rendered}
+          height={150}
+          titleStyle={styles.tileTitle}
+          containerStyle={styles.tileContainer}
+          featured
+          onPress={() =>
+            this.props.navigation.navigate("DevocionalPage", {
+              title: conteudo.title.rendered,
+              image:
+                conteudo.better_featured_image.media_details.sizes.medium_large
+                  .source_url,
+              content: conteudo.content.rendered,
+              author: conteudo.author,
+              date: conteudo.date
+            })
+          }
         />
       </View>
     );
   }
 }
 
+export default withNavigation(Devocional);
+
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#FFF",
-    height: 350,
     flexDirection: "column",
     justifyContent: "space-around",
-    marginBottom: 20,
+    marginBottom: 10,
+    marginBottom: 10,
     elevation: 5
   }
 });
