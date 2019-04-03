@@ -11,9 +11,8 @@ export default class Main extends Component {
       <ScrollView>
         <View style={{ flex: 5 }}>
           <Text style={styles.title}>Seja muito bem-vindo!</Text>
-          {
-            //<MainSlider />
-          }
+
+          <MainSlider />
         </View>
         <View style={{ flex: 3 }}>
           <Text style={styles.title}>O que você não pode perder </Text>

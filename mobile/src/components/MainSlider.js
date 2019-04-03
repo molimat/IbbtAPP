@@ -13,13 +13,18 @@ export class MainSlider extends Component {
   }
 
   async componentDidMount() {
-    const response = await axios.get(
-      "http://ibbt.org.br/wp-json/smartslider3/v1/sliders/3"
-    );
+    const response = await axios.get("http://ibbt.org.br/");
 
     this.setState({ content: response.data, loaded: true });
   }
 
+  getSlide = str => {
+    const URL = str.substring(
+      str.indexOf("src=") + 5,
+      str.indexOf(".mp3?") + 4
+    );
+    return URL;
+  };
   render() {
     const conteudo = this.state.content;
 
@@ -29,7 +34,7 @@ export class MainSlider extends Component {
           originWhitelist={["*"]}
           automaticallyAdjustContentInsets={false}
           style={{ height: 100, backgroundColor: "#FFF" }}
-          source={{ html: conteudo.html.head }}
+          source={{ html: conteudo }}
           scrollEnabled={false}
         />
       )

@@ -11,6 +11,7 @@
     "react": "16.6.3",
     "react-hot-loader": "4.4.0",
     "react-native": "^0.58.5",
+    "react-native-calendars": "^1.27.0",
     "react-native-card-flip": "^1.0.4",
     "react-native-elements": "^1.0.0",
     "react-native-gesture-handler": "^1.0.15",
